@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-06-11T18:35:39.984Z</updated>
+  <updated>2021-06-12T04:11:49.602Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,14 +21,17 @@
     <link href="http://example.com/2021/06/12/hello-world/"/>
     <id>http://example.com/2021/06/12/hello-world/</id>
     <published>2021-06-11T19:24:49.130Z</published>
-    <updated>2021-06-11T18:35:39.984Z</updated>
+    <updated>2021-06-12T04:11:49.602Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Dependency"><a href="#Dependency" class="headerlink" title="Dependency"></a>Dependency</h2><ol><li><p>install  Node.js </p></li><li><p>install Git</p></li><li><p>install hexo</p><pre><code class="shell">npm install -g hexo-cli</code></pre></li></ol><h2 id="Initial-local-project"><a href="#Initial-local-project" class="headerlink" title="Initial local project"></a>Initial local project</h2><pre><code class="shell">   cd sources   hexo init blog   npm install   hexo s</code></pre><p>   <a href="http://localhost:4000/">http://localhost:4000</a> 检查是否成功</p><h2 id="Inital-remote-project"><a href="#Inital-remote-project" class="headerlink" title="Inital remote project"></a>Inital remote project</h2><ol><li><p>create repository</p></li><li><p>setting-&gt;github pages</p></li></ol><h2 id="Deploy"><a href="#Deploy" class="headerlink" title="Deploy"></a>Deploy</h2><ol><li><p>modify blog/_config.yml </p><pre><code class="yaml">  deploy:    type: git    repository: https://github.com/xxx/xxx.github.io.git    branch: master</code></pre></li><li><p>deploy</p><pre><code class="shell">  cd blog  npm install hexo-deployer-git --save  hexo clean  hexo g  hexo d</code></pre></li></ol><h2 id="theme"><a href="#theme" class="headerlink" title="theme"></a>theme</h2><h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><pre><code>git clone https://github.com/litreily/hexo-theme-snark.git themes/snarknpm install hexo-renderer-pug --savenpm install hexo-renderer-sass --save</code></pre><p>then disable default highlight in blog/_config.yml</p><pre><code>highlight:  enable: false  line_number: false  auto_detect: false  tab_replace:</code></pre><h3 id="Add-General-Pages"><a href="#Add-General-Pages" class="headerlink" title="Add General Pages"></a>Add General Pages</h3><p>For beginner of <code>hexo</code>, you may need to know how to create general pages like <code>archives</code>, <code>categories</code>, <code>tags</code> and so on. If you already know that, please skip this step.</p><pre><code>hexo new page archiveshexo new page categorieshexo new page tagshexo new page about</code></pre><h3 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h3><p>You may need install some hexo plugins as below</p><ul><li><code>npm install hexo-generator-feed --save</code> for RSS</li><li><code>npm install hexo-generator-search --save</code> for local search</li><li><code>npm install hexo-generator-sitemap --save</code> for sitemap</li></ul><p>You can add your customized css to <code>source/css/customize.scss</code>, then it will be load to <code>head</code> of blog.</p><blockquote><p>Reference:</p><p><a href="https://github.com/HarleyWang93/blog/issues/1">https://github.com/HarleyWang93/blog/issues/1</a></p><p><a href="https://github.com/Litreily/hexo-theme-snark">https://github.com/Litreily/hexo-theme-snark</a></p><p><a href="https://hexo.io/">Hexo</a></p></blockquote>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+    <summary type="html">&lt;h2 id=&quot;Dependency&quot;&gt;&lt;a href=&quot;#Dependency&quot; class=&quot;headerlink&quot; title=&quot;Dependency&quot;&gt;&lt;/a&gt;Dependency&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;install  Node.js &lt;/p&gt;
+&lt;/li&gt;
+&lt;</summary>
       
     
     
