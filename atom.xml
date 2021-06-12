@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-06-12T04:11:49.602Z</updated>
+  <updated>2021-06-12T04:29:51.348Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Public article by using hexo</title>
+    <link href="http://example.com/2021/06/12/Public-article/"/>
+    <id>http://example.com/2021/06/12/Public-article/</id>
+    <published>2021-06-12T04:22:50.000Z</published>
+    <updated>2021-06-12T04:29:51.348Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="New-page"><a href="#New-page" class="headerlink" title="New page"></a>New page</h2><pre><code class="shell">cd sources/bloghexo new &quot;xxx&quot;</code></pre><h2 id="Edit-article"><a href="#Edit-article" class="headerlink" title="Edit article"></a>Edit article</h2><pre><code class="shell">&#123;gedit/code&#125; source/_posts/&#123;xxx&#125;.md</code></pre><pre><code class="markdown">---title: xxx    //在此处添加你的标题。date: 2016-10-07 13:38:49   //在此处输入编辑这篇文章的时间。tags: xxx    //在此处输入这篇文章的标签。categories: xxx    //在此处输入这篇文章的分类。---</code></pre><h2 id="Publish"><a href="#Publish" class="headerlink" title="Publish"></a>Publish</h2><pre><code class="shell">cd bloghexo ghexo d</code></pre><blockquote><p>Reference:</p><p><a href="https://github.com/HarleyWang93/blog/issues/1">https://github.com/HarleyWang93/blog/issues/1</a></p><p><a href="https://hexo.io/">https://hexo.io/</a></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;New-page&quot;&gt;&lt;a href=&quot;#New-page&quot; class=&quot;headerlink&quot; title=&quot;New page&quot;&gt;&lt;/a&gt;New page&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;shell&quot;&gt;cd sources/blog
+hexo new</summary>
+      
+    
+    
+    
+    <category term="web" scheme="http://example.com/categories/web/"/>
+    
+    
+    <category term="hexo github" scheme="http://example.com/tags/hexo-github/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="http://example.com/2021/06/12/hello-world/"/>
     <id>http://example.com/2021/06/12/hello-world/</id>
     <published>2021-06-11T19:24:49.130Z</published>
-    <updated>2021-06-12T04:11:49.602Z</updated>
+    <updated>2021-06-12T04:13:09.636Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Dependency"><a href="#Dependency" class="headerlink" title="Dependency"></a>Dependency</h2><ol><li><p>install  Node.js </p></li><li><p>install Git</p></li><li><p>install hexo</p><pre><code class="shell">npm install -g hexo-cli</code></pre></li></ol><h2 id="Initial-local-project"><a href="#Initial-local-project" class="headerlink" title="Initial local project"></a>Initial local project</h2><pre><code class="shell">   cd sources   hexo init blog   npm install   hexo s</code></pre><p>   <a href="http://localhost:4000/">http://localhost:4000</a> 检查是否成功</p><h2 id="Inital-remote-project"><a href="#Inital-remote-project" class="headerlink" title="Inital remote project"></a>Inital remote project</h2><ol><li><p>create repository</p></li><li><p>setting-&gt;github pages</p></li></ol><h2 id="Deploy"><a href="#Deploy" class="headerlink" title="Deploy"></a>Deploy</h2><ol><li><p>modify blog/_config.yml </p><pre><code class="yaml">  deploy:    type: git    repository: https://github.com/xxx/xxx.github.io.git    branch: master</code></pre></li><li><p>deploy</p><pre><code class="shell">  cd blog  npm install hexo-deployer-git --save  hexo clean  hexo g  hexo d</code></pre></li></ol><h2 id="theme"><a href="#theme" class="headerlink" title="theme"></a>theme</h2><h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><pre><code>git clone https://github.com/litreily/hexo-theme-snark.git themes/snarknpm install hexo-renderer-pug --savenpm install hexo-renderer-sass --save</code></pre><p>then disable default highlight in blog/_config.yml</p><pre><code>highlight:  enable: false  line_number: false  auto_detect: false  tab_replace:</code></pre><h3 id="Add-General-Pages"><a href="#Add-General-Pages" class="headerlink" title="Add General Pages"></a>Add General Pages</h3><p>For beginner of <code>hexo</code>, you may need to know how to create general pages like <code>archives</code>, <code>categories</code>, <code>tags</code> and so on. If you already know that, please skip this step.</p><pre><code>hexo new page archiveshexo new page categorieshexo new page tagshexo new page about</code></pre><h3 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h3><p>You may need install some hexo plugins as below</p><ul><li><code>npm install hexo-generator-feed --save</code> for RSS</li><li><code>npm install hexo-generator-search --save</code> for local search</li><li><code>npm install hexo-generator-sitemap --save</code> for sitemap</li></ul><p>You can add your customized css to <code>source/css/customize.scss</code>, then it will be load to <code>head</code> of blog.</p><blockquote><p>Reference:</p><p><a href="https://github.com/HarleyWang93/blog/issues/1">https://github.com/HarleyWang93/blog/issues/1</a></p><p><a href="https://github.com/Litreily/hexo-theme-snark">https://github.com/Litreily/hexo-theme-snark</a></p><p><a href="https://hexo.io/">Hexo</a></p></blockquote>]]></content>
     

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Public article by using hexo</title>
+      <link href="/2021/06/12/Public-article/"/>
+      <url>/2021/06/12/Public-article/</url>
+      
+        <content type="html"><![CDATA[<h2 id="New-page"><a href="#New-page" class="headerlink" title="New page"></a>New page</h2><pre><code class="shell">cd sources/bloghexo new &quot;xxx&quot;</code></pre><h2 id="Edit-article"><a href="#Edit-article" class="headerlink" title="Edit article"></a>Edit article</h2><pre><code class="shell">&#123;gedit/code&#125; source/_posts/&#123;xxx&#125;.md</code></pre><pre><code class="markdown">---title: xxx    //在此处添加你的标题。date: 2016-10-07 13:38:49   //在此处输入编辑这篇文章的时间。tags: xxx    //在此处输入这篇文章的标签。categories: xxx    //在此处输入这篇文章的分类。---</code></pre><h2 id="Publish"><a href="#Publish" class="headerlink" title="Publish"></a>Publish</h2><pre><code class="shell">cd bloghexo ghexo d</code></pre><blockquote><p>Reference:</p><p><a href="https://github.com/HarleyWang93/blog/issues/1">https://github.com/HarleyWang93/blog/issues/1</a></p><p><a href="https://hexo.io/">https://hexo.io/</a></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2021/06/12/hello-world/"/>
       <url>/2021/06/12/hello-world/</url>
