@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>Federated Learning Incentive Mechanism(1) | Shiqi Gao</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Shiqi Gao" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/highlight/atom-one-dark.min.css"><script type="text/javascript" src="/plugins/highlight/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();
+</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">MOLOSTAN</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">Shiqi Gao</a></h1></div><p class="m-desc">Everything that you do<br>is habit-forming!</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">Archives</a></li><li><span class="dot">●</span><a href="/categories/">Categories</a></li><li><span class="dot">●</span><a href="/tags/">Tags</a></li><li><span class="dot">●</span><a href="/about/">About</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">Federated Learning Incentive Mechanism(1)</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2021/06/13/Federated-Learning-Incentive-Mechanism/">2021-06-13</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/federated-learning/">federated learning</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><p>​ 在联合学习中，激励数据所有者继续参与数据联合会是一个重要的挑战。实现这一目标的关键是通过以公平和只是态度分享与参与者联合会产生的利润的激励计划。在该步骤可以实现之前，必须建立用于评估给定数据所有者对联合模型的贡献的机制。虽然尚未发表关于解决这个问题的研究，但是在使用基于拍卖的方法激励传感器以提高更多资源以提高数据质量的研究，仍有良好的工作，有可能解决这个问题。</p>
+<p>​ 在本章中，我们概述了评估数据所有者贡献的问题，并突出了一些基于反向拍卖(reverse auction-based approaches)的方法，这是有希望进一步发展的，以帮助解决评估联邦学习中的数据所有者贡献的问题。在本次讨论之后，我们介绍了基于此类评估结果的公平感知利润共享(fairness-aware profit sharing)框架—— 联邦学习激励器（FLI）收益分享计划[Yu等，2020]。它为从数据所有者那里获取高质量贡献的进一步发展提供了蓝图，这些贡献将应用于数据所有者需要延迟支付报酬(delayed payments)的情况，因为联邦必须首先使用联邦模型来产生收入。</p>
+<h2 id="paying-for-contributions-贡献支付">1. PAYING FOR CONTRIBUTIONS 贡献支付</h2>
+<p>​ 对于联邦，数据所有者持续参与联邦学习过程（例如，通过共享加密的模型参数）是其长期成功的关键。数据所有者对联邦的贡献被用来建立机器学习（ML）模型，而机器学习模型又可以用来产生收入。联合会可以与数据所有者分享部分收入作为奖励（图7.1）。这里的研究问题是如何以上下文感知的方式量化每个数据所有者的收益(quantify the payoff for each data owner in a context-aware manner)，以实现长期的可持续运营。</p>
+<p><img src="https://gitee.com/silencrown/pic/raw/master/img/20210613142207.png" style="zoom:80%;" /></p>
+<h3 id="profit-sharing-games-收益分享博弈">1.1 PROFIT-SHARING GAMES 收益分享博弈</h3>
+<h4 id="three-categories-of-widely-used-profit-sharing-schemes-三类收益分享框架">three categories of widely used profit-sharing schemes 三类收益分享框架：</h4>
+<ul>
+<li>Egalitarian：数据联合体产生的任何实用程序单元在帮助产生它的数据所有者之间平均分配。</li>
+<li>Marginal gain：数据联盟中数据所有者的收益是团队加入时获得的效用。</li>
+<li>Marginal loss：数据联盟中数据所有者的收益是团队离开时将失去的效用。</li>
+</ul>
+<h4 id="回报计算-payoff-calculation-formula">回报计算 payoff calculation formula</h4>
+<p><img src="https://gitee.com/silencrown/pic/raw/master/img/20210608213705.png" style="zoom: 50%;" /></p>
+<blockquote>
+<p><span class="math inline">\(u_i(t)\)</span>是 参与方 i 在第<span class="math inline">\(t\)</span>轮合作中, 分享到的支出预算，<span class="math inline">\(\hat u\)</span> = payoff</p>
+</blockquote>
+<h4 id="不同收益分享框架的u_it实现">不同收益分享框架的<span class="math inline">\(u_i(t)\)</span>实现:</h4>
+<ul>
+<li><p>egalitarian profit-sharing：(Equal division) 所有人等分B(t)这一轮的预算。每个参与者的payoff是：</p>
+<p><img src="https://gitee.com/silencrown/pic/raw/master/img/20210608214713.png" style="zoom:50%;" /></p></li>
+<li><p>Individual profit-sharing：每个参与方有自己单独的贡献：</p>
+<p><img src="https://gitee.com/silencrown/pic/raw/master/img/20210608214818.png" style="zoom:50%;" /></p>
+<blockquote>
+<p><span class="math inline">\(v(X)\)</span>是评估效用的函数</p>
+</blockquote></li>
+<li><p>Labor Union game profit-sharing(based on marginal contribution):在指定顺序下,i为合作带来的效用:</p>
+<p><img src="https://gitee.com/silencrown/pic/raw/master/img/20210613150008.png" style="zoom:80%;" /></p>
+<blockquote>
+<p>其中<span class="math inline">\(F\)</span>是<span class="math inline">\(i\)</span>之前的合作者序列</p>
+</blockquote></li>
+<li><p>Shapley game profit-sharing(based on marginal contribution) : 比 labor union game更加公平,因为可以评估不同顺序下合作贡献</p>
+<p><img src="https://gitee.com/silencrown/pic/raw/master/img/20210613153628.png" style="zoom:80%;" /></p>
+<blockquote>
+<p><span class="math inline">\(P\)</span> 表示一个联盟集合</p>
+<p><span class="math inline">\(P_j /\ \{i\}\)</span> 表示一个联盟集合中删除元素 i</p>
+</blockquote></li>
+<li><p>Fair-value game (marginal loss-based ) :</p>
+<p><img src="https://gitee.com/silencrown/pic/raw/master/img/20210613155025.png" style="zoom:80%;" /></p></li>
+</ul>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">Shiqi Gao</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/06/13/Federated-Learning-Incentive-Mechanism/">http://example.com/2021/06/13/Federated-Learning-Incentive-Mechanism/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">Shiqi Gao的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/Federated-Learning-Research/">Federated Learning Research</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#paying-for-contributions-%E8%B4%A1%E7%8C%AE%E6%94%AF%E4%BB%98"><span class="toc-number">1.</span> <span class="toc-text">1. PAYING FOR CONTRIBUTIONS 贡献支付</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#profit-sharing-games-%E6%94%B6%E7%9B%8A%E5%88%86%E4%BA%AB%E5%8D%9A%E5%BC%88"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 PROFIT-SHARING GAMES 收益分享博弈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#three-categories-of-widely-used-profit-sharing-schemes-%E4%B8%89%E7%B1%BB%E6%94%B6%E7%9B%8A%E5%88%86%E4%BA%AB%E6%A1%86%E6%9E%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">three categories of widely used profit-sharing schemes 三类收益分享框架：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9E%E6%8A%A5%E8%AE%A1%E7%AE%97-payoff-calculation-formula"><span class="toc-number">1.1.2.</span> <span class="toc-text">回报计算 payoff calculation formula</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E6%94%B6%E7%9B%8A%E5%88%86%E4%BA%AB%E6%A1%86%E6%9E%B6%E7%9A%84u_it%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.1.3.</span> <span class="toc-text">不同收益分享框架的\(u_i(t)\)实现:</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="next" href="/2021/06/12/Publish-article/">Publish article by using hexo &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
+.night .v[data-class=v] a:hover { color: #216C73 !important; }
+.night .v[data-class=v] li { list-style: inherit; }
+.night .v[data-class=v] .vwrap { border: 1px solid #223441; border-radius: 0; }
+.night .v[data-class=v] .vwrap:hover { box-shadow: 0 0 6px 1px #223441; }
+.night .v[data-class=v] .vbtn { border-radius: 0; background: none; }
+.night .v[data-class=v] .vlist .vcard .vh { border-bottom-color: #293D4E; }
+.night .v[data-class=v] .vwrap .vheader .vinput { border-bottom-color: #223441; }
+.night .v[data-class=v] .vwrap .vheader .vinput:focus { border-bottom-color: #339EB4; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre,.night .v[data-class=v] .vlist .vcard .vhead .vsys { background: #203240 !important; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre { color: #F0F0F0; font-size: 95%; }
+.v[data-class=v] .vcards .vcard .vh {border-bottom-color: #223441; }
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:before {background: linear-gradient(180deg,rgba(38,57,73,.4),rgba(38,57,73,.9));}
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:after {background: rgba(38,57,73,.9)}
+</style><div id="vcomment"></div><script src="//cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'',
+  appKey:'',
+  lang: 'en',
+  placeholder:'Say something...',
+  avatar:'identicon',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></section><footer><p>Copyright © 2016 - 2021 <a href="/." rel="nofollow">Shiqi Gao</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script></body></html>
